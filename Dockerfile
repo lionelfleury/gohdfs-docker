@@ -2,13 +2,13 @@ FROM ubuntu:bionic
 
 MAINTAINER Lionel Fleury <lionel@sqooba.io>
 
-ARG version=gohdfs-v2.1.1-linux-amd64
+ARG version=v2.1.1
 
 RUN apt-get update && apt-get install --no-install-recommends -y wget && \
   mkdir -p /tmp/gohdfs && \
-  wget --no-check-certificate https://github.com/colinmarc/hdfs/releases/download/v2.1.1/$version.tar.gz -O /tmp/gohdfs/gohdfs.tar.gz && \
+  wget --no-check-certificate https://github.com/colinmarc/hdfs/releases/download/$version/gohdfs-$version-linux-amd64.tar.gz -O /tmp/gohdfs/gohdfs.tar.gz && \
   tar -xf /tmp/gohdfs/gohdfs.tar.gz -C /tmp/gohdfs && \
-  mv -f /tmp/gohdfs/$version/hdfs /bin/hdfs && \
+  mv -f /tmp/gohdfs/gohdfs-$version-linux-amd64/hdfs /bin/hdfs && \
   rm -rf /tmp/gohdfs && \
   apt-get autoremove -y wget && \
   rm -rf /var/lib/apt/lists/*
