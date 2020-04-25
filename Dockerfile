@@ -16,4 +16,6 @@ COPY --from=build /bin/hdfs /bin/hdfs
 ENV HADOOP_NAMENODE=localhost:8020
 ENV HADOOP_USER_NAME=hadoop
 
+WORKDIR /data
+
 ENTRYPOINT [ "/bin/hdfs" ]
